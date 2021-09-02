@@ -1,0 +1,225 @@
+@import './project-bootstrap.less';
+
+@import '../../../node_modules/bootstrap-slider/css/bootstrap-slider.css';
+
+@headerAffixBarHeight: 7px;
+@chartsContainerHeight: 255px;
+
+@round-money-color: limegreen;
+@round-money-opacity: 0.5;
+@round-valuation-color: steelblue;
+@round-valuation-opacity: 0.5;
+
+@import './round-details.less';
+@import './svg-charts.less';
+
+body {
+  position: relative; // needed for scrollspy, allegedly
+}
+html {
+  height: 100%; // some hack that also makes scrollspy work. nooooo idea on this one.... https://github.com/twbs/bootstrap/issues/5007
+}
+
+@media (max-width: 1015px) {
+  .hidden-no-pvs-width {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1015px) {
+  .visible-no-pvs-width {
+    display: none !important;
+  }
+}
+
+.headerGradient () {
+  #gradient > .radial(@brand-primary; darken(@brand-primary, 10%));
+}
+
+body > header {
+
+  .headerGradient();
+
+  padding: 15px;
+
+  h1 {
+    color: white;
+    font-weight: 300;
+
+  }
+
+  .subtitle {
+    color: lighten(@brand-primary, 40%);
+    max-width: 605px;
+    font-weight: 300;
+    letter-spacing: 0.03em
+  }
+
+  p {
+    color: lighten(@brand-primary, 20%);
+  }
+
+  a {
+    color: lighten(@brand-primary, 30%);
+
+    &:active, &:visited {
+      color: lighten(@brand-primary, 30%);
+    }
+
+    &:hover {
+      color: lighten(@brand-primary, 60%);
+    }
+  }
+
+  .draft-header {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    z-index: 200;
+  }
+}
+
+#header-affix-bar {
+  height: @headerAffixBarHeight;
+  position: relative; // to position initially at bottom of header
+  top: -@headerAffixBarHeight;
+  margin-bottom: -@headerAffixBarHeight; // needed so stuff below it ignores on initial positioning
+
+  font-size: 8px;
+  color: white;
+  width: 100%;
+  z-index: 101;
+
+  &.affix-top {
+    background: none;
+  }
+
+  &.affix {
+    position: fixed;
+    top: 0;
+
+    .headerGradient();
+  }
+}
+
+h1, h2, h3, h4 {
+  color: @brand-primary;
+}
+
+#scenarios {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+
+  h1, h2, h3, h4 {
+    color: lighten(@brand-primary, 20%);
+    font-weight: 300;
+    border-bottom: 3px solid;
+    letter-spacing: -0.02em;
+
+    &.focus {
+      color: @brand-primary
+    }
+  }
+
+  h1 {
+    margin-top: 300px;
+  }
+
+  > div:first-child {
+    h1 {
+      margin-top: 0px;
+    }
+  }
+
+  h2 {
+    margin-top: 150px;
+  }
+
+  a {
+    cursor: pointer;
+    font-weight: 800;
+  }
+
+  .slider {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  margin-bottom: 300px;
+
+  .side-note {
+    font-size: @font-size-small;
+    margin-left: 50px;
+
+    .panel-body {
+      padding: 10px;
+    }
+
+    a {
+      font-weight: 400;
+    }
+  }
+
+  .panel-heading {
+    color: white;
+    font-size: @font-size-large;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+  }
+
+}
+
+.poor-mans-toggle {
+  .btn-primary.disabled {
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+
+body .slider-handle {
+  background-color: cadetblue;
+
+
+  background-image: -webkit-linear-gradient(top, cadetblue 0%, darken(cadetblue, 15%) 100%)
+}
+
+.demo-reel {
+  position: relative;
+  padding: 20px;
+
+  h1 {
+    position: absolute;
+    bottom: -75px;
+    right: 450px;
+
+    &.animated {
+      transition: all 300ms ease-out;
+    }
+
+    &.fade-out {
+      bottom: 40px;
+      opacity: 0;
+    }
+
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    color: @brand-primary
+  }
+
+  .supertitle, .subtitle {
+    position: absolute;
+    right: 450px;
+  }
+
+  .supertitle {
+    bottom: -20px;
+    color: cadetblue;
+  }
+
+  .subtitle {
+    bottom: -90px;
+    font-weight: 300;
+    color: lighten(@brand-primary, 20%);
+  }
+}

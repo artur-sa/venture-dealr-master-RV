@@ -1,0 +1,81 @@
+.round-details {
+  h2, h3, h4 {
+    color: black;
+    font-weight: 300;
+
+    .highlight-round-money {
+      border-bottom: 4px solid fade(@round-money-color, @round-money-opacity * 100);
+    }
+
+    .highlight-round-valuation {
+      border-bottom: 4px solid fade(@round-valuation-color, @round-valuation-opacity * 100);;
+    }
+  }
+
+  &.affix {
+    top: @headerAffixBarHeight + @chartsContainerHeight;
+  }
+}
+
+.highlight-round-money {
+  display: inline-block;
+  border-bottom: 3px solid fade(@round-money-color, @round-money-opacity * 100);
+}
+
+.highlight-round-valuation {
+  display: inline-block;
+  border-bottom: 3px solid fade(@round-valuation-color, @round-valuation-opacity * 100);;
+}
+
+.highlight-round-options {
+  display: inline-block;
+  border-bottom: 3px solid fade(@round-valuation-color, @round-valuation-opacity * 100);;
+  border-bottom-style: dotted;
+}
+
+.round-breakdown {
+  max-width: 600px;
+
+  .table {
+    width: auto;
+  }
+
+  .option-pool-shuffle {
+    blockquote {
+      width: 340px;
+      margin-left: 10px
+    }
+  }
+}
+
+table.exit-table {
+  font-size: 12px;
+
+  .underwater {
+    color: red;
+  }
+
+  td {
+    line-height: 17px; // defaults 1.428 @ 12px == 17.1ish.  Need precise for ROI fill-bar spacing
+  }
+
+  td.roi {
+    position: relative;
+    top: 0;
+    left: 0;
+
+    &.underwater .fill-bar {
+      background-color: rgba(255, 0, 0, 0.2);
+    }
+
+    .fill-bar {
+      background-color: rgba(95, 158, 160, 0.2);
+
+      position: absolute;
+      margin-left: -5px;
+      width: 100%;
+      height: 27px;
+
+    }
+  }
+}
